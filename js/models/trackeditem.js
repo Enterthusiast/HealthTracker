@@ -6,6 +6,6 @@ var app = app || {};
 app.TrackedItem = Backbone.Model.extend({
 
     // // Tell Backbone what is the name of our id variable
-    // idAttribute: 'uuid',
+    // idAttribute: '_id',
 
 });

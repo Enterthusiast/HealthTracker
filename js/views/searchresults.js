@@ -20,10 +20,11 @@ app.SearchResultsView = Backbone.View.extend({
         this.$searchResults = this.$('.search-results');
         this.$searchText = this.$('.search-text');
 
-        // Listen to Backboen events
-        this.listenTo(app.SearchResults, 'add', this.addResultView);
-        this.listenTo(app.SearchResults, 'fetch', this.wipeResultView);
-        this.listenTo(app.SearchResults, 'add fetch', this.render);
+        // Listen to Backbone events
+        // this.listenTo(this.collection, 'add', this.addResultView);
+        this.listenTo(this.collection, 'reset', this.wipeResultView);
+        this.listenTo(this.collection, 'sort', this.addResultsView);
+        this.listenTo(this.collection, 'all', this.render);
 
     },
 
@@ -33,13 +34,30 @@ app.SearchResultsView = Backbone.View.extend({
 
     },
 
-    addResultView: function(result) {
+    addResultView: function(result, index) {
 
         // Add one result to the view
         var searchResultView = new app.SearchResultView({model: result})
         this.$searchResults.append(searchResultView.render().el);
 
+        if(index === this.collection.length - 1) {
+
+            this.$searchResults.prepend('<tr><td><h4>Search results</h4></td><td></td></tr>');
+
+        }
+
     },
+
+    addResultsView: function() {
+
+        _.each(this.collection.models, function(data, index) {
+
+            this.addResultView(data, index)
+
+        }, this);
+
+    },
+
 
     wipeResultView: function() {
 

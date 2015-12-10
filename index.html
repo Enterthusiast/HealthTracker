@@ -8,7 +8,7 @@
     <title>HealthTracker</title>
 
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.css">
 
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -21,8 +21,15 @@
     <div class="search">
         <input type="text" class="search-text" placeholder="Search for food">
         <button type="button" class="search-button">Search</button>
-        <ul class="search-results">
-        </ul>
+        <table class="search-results table table-striped">
+            <tr><td><h4>Search results</h4></td><td></td></tr>
+        </table>
+    </div>
+
+    <div class="tracked">
+        <table class="tracked-items table table-striped">
+            <tr><td><h4>Tracked items</h4></td><td class="tracked-calories"><h4>Total calories</h4></td></tr>
+        </table>
     </div>
 
     <!-- Libraries -->

@@ -29,8 +29,14 @@ app.SearchResultList = Backbone.Collection.extend({
     fetchSearch: function(search) {
 
         this.url = 'https://api.nutritionix.com/v1_1/search/' + search + '?fields=item_name%2Citem_id%2Cnf_calories&appId=d0cb930d&appKey=d1f65536f72a648a3b0c2ae8444ee96a';
-        this.fetch();
-        console.log(this);
+        this.reset();
+        this.fetch({wait: true});
+
+    },
+
+    comparator: function(model) {
+
+        return model.attributes.fields.nf_calories;
 
     }
 

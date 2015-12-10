@@ -8,7 +8,13 @@ var app = app || {};
 app.SearchResultView = Backbone.View.extend({
 
     // DOM element
-    tagName: 'li',
+    tagName: 'tr',
+
+    events: {
+
+        'click .search-result': 'addTracked'
+
+    },
 
     initialize: function() {
 
@@ -19,10 +25,19 @@ app.SearchResultView = Backbone.View.extend({
 
     render: function() {
 
-        this.$el.html(this.model.attributes.fields.item_name);
+        var tempHTML = '<td class="search-result" result_id="' + this.model.id + '">' + this.model.attributes.fields.item_name +  '</td><td>' + this.model.attributes.fields.nf_calories + ' calories</td>';
+        this.$el.html(tempHTML);
 
         // Good practice for chaining
         return this;
+
+    },
+
+    addTracked: function(result) {
+
+        console.log(result);
+        app.TrackedItems.add(app.SearchResults.get(result.toElement.getAttribute('result_id')));
+        console.log(app.TrackedItems);
 
     }
 
