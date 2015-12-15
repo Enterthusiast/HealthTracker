@@ -18,18 +18,42 @@
 </head>
 <body>
 
-    <div class="search">
-        <input type="text" class="search-text" placeholder="Search for food">
-        <button type="button" class="search-button">Search</button>
-        <table class="search-results table table-striped">
-            <tr><td><h4>Search results</h4></td><td></td></tr>
-        </table>
-    </div>
-
-    <div class="tracked">
-        <table class="tracked-items table table-striped">
-            <tr><td><h4>Tracked items</h4></td><td class="tracked-calories"><h4>Total calories</h4></td></tr>
-        </table>
+    <!-- Layout with Bootstrap -->
+    <div class="container">
+        <div class="row text-center">
+            <h1>Heatlh Tracker</h1>
+            <p>Search for a food item, then click the result you want to track. The total calories count is automaticaly updated.
+            <br>You can add as many item as you want. Click a tracked item to untrack.</p>
+        </div>
+        <div class="search">
+            <div class="col-md-5">
+                <div class="row">
+                    <div class="col-xs-9 col-md-9">
+                        <input type="search" class="form-control" id="search-text" placeholder="Type a food name">
+                    </div>
+                    <div class="col-xs-3 col-md-3">
+                        <button type="submit" class="search-button btn">Search</button>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <table class="search-results table table-striped table-hover">
+                        <tr><td><h4>Search results</h4></td><td></td></tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1">
+        </div>
+        <div class="tracked">
+            <div class="col-md-6">
+                <div class="row">
+                    <table class="tracked-items table table-striped table-hover">
+                        <tr><td><h4>Tracked items</h4></td><td class="tracked-calories"><h4>Total</h4></td></tr>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Libraries -->

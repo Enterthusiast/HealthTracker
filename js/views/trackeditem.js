@@ -2,8 +2,7 @@
 
 var app = app || {};
 
-// TODO: build get functions on the model instead of getting the data directly
-
+// Backbone view for a TrackedItem model
 app.TrackedItemView = Backbone.View.extend({
 
     tagName: 'tr',
@@ -11,6 +10,7 @@ app.TrackedItemView = Backbone.View.extend({
     // DOM events
     events: {
 
+        // Add a Jquery event to untracked an item
         'click .tracked-item': 'untrackItem',
 
     },
@@ -25,6 +25,7 @@ app.TrackedItemView = Backbone.View.extend({
 
     render: function() {
 
+        // Build the item entry HTML
         var tempHTML = '<td class="tracked-item">' + this.model.attributes.fields.item_name +  '</td><td>' + this.model.attributes.fields.nf_calories + ' calories</td>';
         this.$el.html(tempHTML);
 
@@ -35,6 +36,7 @@ app.TrackedItemView = Backbone.View.extend({
 
     untrackItem: function() {
 
+        // Destroy the model, remove it from the collection and the view
         this.model.destroy();
 
     }

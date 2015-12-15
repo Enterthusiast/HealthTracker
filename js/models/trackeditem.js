@@ -2,10 +2,7 @@
 
 var app = app || {};
 
-// Backbone content model
+// Backbone TrackedItem model
 app.TrackedItem = Backbone.Model.extend({
-
-    // // Tell Backbone what is the name of our id variable
-    // idAttribute: '_id',
 
 });

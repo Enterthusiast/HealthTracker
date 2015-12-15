@@ -2,9 +2,7 @@
 
 var app = app || {};
 
-// TODO: build get functions on the model instead of getting the data directly
-
-// Backbone view for an article model
+// Backbone view for a SearchResult model
 app.SearchResultView = Backbone.View.extend({
 
     // DOM element
@@ -12,6 +10,7 @@ app.SearchResultView = Backbone.View.extend({
 
     events: {
 
+        // Add a Jquery event to add a Result to the Tracked items
         'click .search-result': 'addTracked'
 
     },
@@ -25,6 +24,7 @@ app.SearchResultView = Backbone.View.extend({
 
     render: function() {
 
+        // Build the result entry HTML
         var tempHTML = '<td class="search-result" result_id="' + this.model.id + '">' + this.model.attributes.fields.item_name +  '</td><td>' + this.model.attributes.fields.nf_calories + ' calories</td>';
         this.$el.html(tempHTML);
 
@@ -35,9 +35,8 @@ app.SearchResultView = Backbone.View.extend({
 
     addTracked: function(result) {
 
-        console.log(result);
+        // Add a TrackedItem with the SearchResult attributes to the TrackedItems collection
         app.TrackedItems.add(app.SearchResults.get(result.toElement.getAttribute('result_id')));
-        console.log(app.TrackedItems);
 
     }
 

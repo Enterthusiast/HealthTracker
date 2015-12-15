@@ -2,36 +2,18 @@
 
 var app = app || {};
 
-// Displaying an article means in fact displaying a collection of contents
-
-// Backbone collection of contents model
+// Backbone collection of TrackedItem model
 app.TrackedItemList = Backbone.Collection.extend({
 
-    // Set the model for a content model
+    // Set the model for the list
     model: app.TrackedItem,
-
-    idcounter: 0,
 
     add: function( model, options ){
 
-        // call the real add
+        // call the real add with the list of attributes we want to use
+        // to build the models
         Backbone.Collection.prototype.add.call(this, model.attributes);
 
     }
-
-    // // Listening to Backbone events
-    // initialize: function() {
-
-    // },
-
-    // // Overriding the parse function
-    // // This way we can store important information in the collection
-    // // and then build the models from the data we want.
-    // parse: function(response) {
-
-    //     // // We return only the datas we want the contents to be made of
-    //     // return contentsFetcher.embedded.contents;
-
-    // }
 
 });

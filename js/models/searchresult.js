@@ -2,7 +2,7 @@
 
 var app = app || {};
 
-// Backbone article model
+// Backbone SearchResult model
 app.SearchResult = Backbone.Model.extend({
 
     // Tell Backbone what is the name of our id variable
