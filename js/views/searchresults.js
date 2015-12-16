@@ -21,6 +21,7 @@ app.SearchResultsView = Backbone.View.extend({
         // Store query requests
         this.$searchResults = this.$('.search-results');
         this.$searchText = this.$('#search-text');
+        this.$searchButton = this.$('.search-button');
 
         // Listen to Backbone events
         this.listenTo(this.collection, 'reset', this.wipeResultView);
@@ -31,8 +32,35 @@ app.SearchResultsView = Backbone.View.extend({
 
     startSearch: function() {
 
+        this.showLoading();
         // Fetch data
-        this.collection.fetchSearch(this.$searchText.val().trim());
+        this.collection.fetchSearch(this.$searchText.val().trim(), { hideLoading: this.hideLoading, view: this});
+
+    },
+
+    showLoading: function() {
+
+        this.$searchButton.text('Loading...')
+
+    },
+
+    hideLoading: function(status, view) {
+
+        if(status.toString() === 'success') {
+
+            view.$searchButton.text('Search');
+
+        } else if(status.toString() === 'error') {
+
+            view.$searchButton.text('Error Try Again');
+
+        }
+
+        if(view.collection.length === 0) {
+
+            view.$searchResults.html('<tr><td><h4>Search results</h4></td><td><h4>No Result</h4></td></tr>');
+
+        }
 
     },
 
@@ -67,6 +95,8 @@ app.SearchResultsView = Backbone.View.extend({
     },
 
     addResultsView: function() {
+
+        this.wipeResultView();
 
         // Read the collection, add the Results to the page
         _.each(this.collection.models, function(data, index) {

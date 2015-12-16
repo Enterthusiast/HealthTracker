@@ -43,7 +43,7 @@ app.SearchResultView = Backbone.View.extend({
     addTracked: function(result) {
 
         // Add a TrackedItem with the SearchResult attributes to the TrackedItems collection
-        app.TrackedItems.add(app.SearchResults.get(result.toElement.parentElement.getAttribute('result_id')));
+        app.TrackedItems.create(app.SearchResults.get(result.toElement.parentElement.getAttribute('result_id')));
 
     }
 
