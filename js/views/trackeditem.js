@@ -11,7 +11,7 @@ app.TrackedItemView = Backbone.View.extend({
     events: {
 
         // Add a Jquery event to untracked an item
-        'click .tracked-item': 'untrackItem',
+        'click': 'untrackItem',
 
     },
 
@@ -26,7 +26,7 @@ app.TrackedItemView = Backbone.View.extend({
     render: function() {
 
         // Build the item entry HTML
-        var tempHTML = '<td class="tracked-item">' + this.model.attributes.fields.item_name +  '</td><td>' + this.model.attributes.fields.nf_calories + ' calories</td>';
+        var tempHTML = '<td>' + this.model.attributes.fields.item_name +  '</td><td>' + this.model.attributes.fields.nf_calories + ' calories</td>';
         this.$el.html(tempHTML);
 
         // Good practice for chaining
