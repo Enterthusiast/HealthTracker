@@ -40,22 +40,29 @@ app.SearchResultsView = Backbone.View.extend({
 
     showLoading: function() {
 
+        // Show the user the request is being handled
         this.$searchButton.text('Loading...')
 
     },
 
     hideLoading: function(status, view) {
 
+        // If the request is a success
+        // We go back to the default state of the button
         if(status.toString() === 'success') {
 
             view.$searchButton.text('Search');
 
+        // If not we tell the user there was an error
+        // And invite him to try again
         } else if(status.toString() === 'error') {
 
             view.$searchButton.text('Error Try Again');
 
         }
 
+        // Successful or not, the request can return 0 results
+        // We give this piece of information to the user
         if(view.collection.length === 0) {
 
             view.$searchResults.html('<tr><td><h4>Search results</h4></td><td><h4>No Result</h4></td></tr>');
@@ -85,17 +92,11 @@ app.SearchResultsView = Backbone.View.extend({
         var searchResultView = new app.SearchResultView({model: result});
         this.$searchResults.append(searchResultView.render().el);
 
-        // Add the header when every results have been added
-        if(index === this.collection.length - 1) {
-
-            this.$searchResults.prepend('<tr><td><h4>Search results</h4></td><td></td></tr>');
-
-        }
-
     },
 
     addResultsView: function() {
 
+        // Wipe first
         this.wipeResultView();
 
         // Read the collection, add the Results to the page
@@ -111,6 +112,13 @@ app.SearchResultsView = Backbone.View.extend({
 
         // Remove the results from the page
         this.$searchResults.html('');
+
+        // Focus back on the research bar
+        // it's likely the user would like to add another item
+        this.$searchText.focus();
+
+        // Set the table header
+        this.$searchResults.html('<tr><td><h4>Search results</h4></td><td></td></tr>');
 
     }
 

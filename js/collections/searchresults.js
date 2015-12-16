@@ -31,10 +31,14 @@ app.SearchResultList = Backbone.Collection.extend({
         this.fetch({
             wait: true,
             error: function(model, response)  {
+
                 callbackData.hideLoading('error', callbackData.view);
+
             },
             success: function(model, response)  {
+
                 callbackData.hideLoading('success', callbackData.view);
+
             }
         });
 

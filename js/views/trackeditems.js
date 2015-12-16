@@ -36,6 +36,7 @@ app.TrackedItemsView = Backbone.View.extend({
 
     updateTrackedCalories: function() {
 
+        // Reset the total
         this.trackedCalories = 0;
 
         // Calculate the total number of calories in the collection
