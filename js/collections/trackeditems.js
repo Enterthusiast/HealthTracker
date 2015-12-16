@@ -8,11 +8,14 @@ app.TrackedItemList = Backbone.Collection.extend({
     // Set the model for the list
     model: app.TrackedItem,
 
-    add: function( model, options ){
+    // localStorage save data locally on the user machine
+    localStorage: new Backbone.LocalStorage("healthtracker-trackeditems"),
 
-        // call the real add with the list of attributes we want to use
+    create: function( model, options ){
+
+        // call the real create with the list of attributes we want to use
         // to build the models
-        Backbone.Collection.prototype.add.call(this, model.attributes);
+        Backbone.Collection.prototype.create.call(this, model.attributes);
 
     }
 

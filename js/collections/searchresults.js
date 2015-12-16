@@ -21,14 +21,26 @@ app.SearchResultList = Backbone.Collection.extend({
 
     },
 
-    fetchSearch: function(search) {
+    fetchSearch: function(search, callbackData) {
 
         // Create the URL corresponding to the user search
         this.url = 'https://api.nutritionix.com/v1_1/search/' + search + '?fields=item_name%2Citem_id%2Cnf_calories&appId=d0cb930d&appKey=d1f65536f72a648a3b0c2ae8444ee96a';
 
         // Then reset the collection and fetch data with the new URL
         this.reset();
-        this.fetch({wait: true});
+        this.fetch({
+            wait: true,
+            error: function(model, response)  {
+
+                callbackData.hideLoading('error', callbackData.view);
+
+            },
+            success: function(model, response)  {
+
+                callbackData.hideLoading('success', callbackData.view);
+
+            }
+        });
 
     },
 

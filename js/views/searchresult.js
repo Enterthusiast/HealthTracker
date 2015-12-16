@@ -23,6 +23,7 @@ app.SearchResultView = Backbone.View.extend({
 
     initialize: function() {
 
+        // Set the previously "empty" attribute
         this.$el.attr('result_id', this.model.id);
         // Listening to Backbone events
         this.listenTo(this.model, 'destroy', this.remove);
@@ -43,7 +44,11 @@ app.SearchResultView = Backbone.View.extend({
     addTracked: function(result) {
 
         // Add a TrackedItem with the SearchResult attributes to the TrackedItems collection
-        app.TrackedItems.add(app.SearchResults.get(result.toElement.parentElement.getAttribute('result_id')));
+        app.TrackedItems.create(app.SearchResults.get(result.toElement.parentElement.getAttribute('result_id')));
+
+        // Reset the search results (As ask by the the project guidelines)
+        // (Is it really a good UX feature?)
+        this.model.collection.reset();
 
     }
 

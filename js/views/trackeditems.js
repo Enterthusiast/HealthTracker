@@ -5,9 +5,10 @@ var app = app || {};
 // Backbone view for the TrackedItems collection
 app.TrackedItemsView = Backbone.View.extend({
 
-    // // DOM element
+    // DOM element
     el: $('.tracked'),
 
+    // Total calories tracked
     trackedCalories: 0,
 
     initialize: function() {
@@ -21,6 +22,8 @@ app.TrackedItemsView = Backbone.View.extend({
         this.listenTo(this.collection, 'add destroy', this.updateTrackedCalories);
         this.listenTo(this.collection, 'all', this.render);
 
+        this.collection.fetch();
+
     },
 
     addTrackedItemView: function(item) {
@@ -33,6 +36,7 @@ app.TrackedItemsView = Backbone.View.extend({
 
     updateTrackedCalories: function() {
 
+        // Reset the total
         this.trackedCalories = 0;
 
         // Calculate the total number of calories in the collection
