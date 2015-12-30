@@ -29,7 +29,7 @@ app.TrackedItemsView = Backbone.View.extend({
     addTrackedItemView: function(item) {
 
         // Add one result to the view
-        var trackedItemView = new app.TrackedItemView({model: item})
+        var trackedItemView = new app.TrackedItemView({model: item});
         this.$trackedItems.append(trackedItemView.render().el);
 
     },

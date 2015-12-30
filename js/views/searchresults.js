@@ -41,7 +41,7 @@ app.SearchResultsView = Backbone.View.extend({
     showLoading: function() {
 
         // Show the user the request is being handled
-        this.$searchButton.text('Loading...')
+        this.$searchButton.text('Loading...');
 
     },
 
@@ -62,10 +62,11 @@ app.SearchResultsView = Backbone.View.extend({
         }
 
         // Successful or not, the request can return 0 results
-        // We give this piece of information to the user
+        // We give this piece of information to the user0,
         if(view.collection.length === 0) {
 
-            view.$searchResults.html('<tr><td><h4>Search results</h4></td><td><h4>No Result</h4></td></tr>');
+            view.$searchResults.html('<tr><td><h4>Search results</h4></td>'
+                + '<td><h4>No Result</h4></td></tr>');
 
         }
 

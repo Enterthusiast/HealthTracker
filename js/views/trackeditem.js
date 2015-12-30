@@ -26,7 +26,11 @@ app.TrackedItemView = Backbone.View.extend({
     render: function() {
 
         // Build the item entry HTML
-        var tempHTML = '<td>' + this.model.attributes.fields.item_name +  '</td><td>' + this.model.attributes.fields.nf_calories + ' calories</td>';
+        var tempHTML = '<td>'
+            + this.model.attributes.fields.item_name
+            +  '</td><td>'
+            + this.model.attributes.fields.nf_calories
+            + ' calories</td>';
         this.$el.html(tempHTML);
 
         // Good practice for chaining

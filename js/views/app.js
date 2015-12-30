@@ -13,4 +13,4 @@ $(function () {
     app.TrackedItems = new app.TrackedItemList();
     app.TrackedItemsApp = new app.TrackedItemsView({collection: app.TrackedItems});
 
-})
+});
